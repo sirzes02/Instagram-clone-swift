@@ -179,9 +179,30 @@ class LoginViewController: UIViewController {
         passwordTextField.resignFirstResponder()
         usernameEmailTextField.resignFirstResponder()
         
-        guard let username = usernameEmailTextField.text, !username.isEmpty,
+        guard let usernameEmail = usernameEmailTextField.text, !usernameEmail.isEmpty,
         let password = passwordTextField.text, !password.isEmpty, password.count >= 8 else {
             return
+        }
+        
+        var username: String?
+        var email: String?
+        
+        if usernameEmail.contains("@"), usernameEmail.contains(".") {
+            email = usernameEmail
+        } else {
+            username = usernameEmail
+        }
+        
+        AuthManager.shared.loginUser(with: username, email: email, password: password) { success in
+            DispatchQueue.main.async {
+                if success {
+                    self.dismiss(animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Log In Error", message: "We Were Unable To Log In", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                    self.present(alert, animated: true)
+                }
+            }
         }
     }
     
@@ -203,7 +224,8 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapCreateAccountButton() {
         let vc = RegistrationViewController()
-        present(vc, animated: true)
+        vc.title = "Create Account"
+        present(UINavigationController(rootViewController: vc), animated: true)
     }
     
 }
