@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0E7D782CACED7B006A6FD8 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E7D772CACED7B006A6FD8 /* FormTableViewCell.swift */; };
+		BF0E7D7B2CACF253006A6FD8 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E7D7A2CACF253006A6FD8 /* PhotoCollectionViewCell.swift */; };
+		BF0E7D7D2CACF2A6006A6FD8 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E7D7C2CACF2A6006A6FD8 /* ProfileInfoHeaderCollectionReusableView.swift */; };
+		BF0E7D7F2CACF2D2006A6FD8 /* ProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E7D7E2CACF2D2006A6FD8 /* ProfileTabsCollectionReusableView.swift */; };
 		BF1509662CAA620B00D55107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF15095E2CAA620B00D55107 /* LaunchScreen.storyboard */; };
 		BF1509672CAA620B00D55107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1509602CAA620B00D55107 /* Main.storyboard */; };
 		BF1509682CAA620B00D55107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1509622CAA620B00D55107 /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		570E5F4DD6ADF4CBA8CE0F69 /* Pods-Instagram-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-clone.release.xcconfig"; path = "Target Support Files/Pods-Instagram-clone/Pods-Instagram-clone.release.xcconfig"; sourceTree = "<group>"; };
+		BF0E7D772CACED7B006A6FD8 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
+		BF0E7D7A2CACF253006A6FD8 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		BF0E7D7C2CACF2A6006A6FD8 /* ProfileInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		BF0E7D7E2CACF2D2006A6FD8 /* ProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
 		BF15095A2CAA620B00D55107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF15095B2CAA620B00D55107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF15095D2CAA620B00D55107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +104,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF0E7D792CACF223006A6FD8 /* CollectionView Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E7D7C2CACF2A6006A6FD8 /* ProfileInfoHeaderCollectionReusableView.swift */,
+				BF0E7D7E2CACF2D2006A6FD8 /* ProfileTabsCollectionReusableView.swift */,
+			);
+			path = "CollectionView Headers";
+			sourceTree = "<group>";
+		};
 		BF1509592CAA620B00D55107 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +146,7 @@
 		BF1509632CAA620B00D55107 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF0E7D792CACF223006A6FD8 /* CollectionView Headers */,
 				BF7D89AE2CAB9E3900671B0E /* Cells */,
 				BF1509612CAA620B00D55107 /* Storyboards */,
 				BF1509622CAA620B00D55107 /* Assets.xcassets */,
@@ -206,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				BF7D89B12CAB9F5D00671B0E /* Home Feed */,
+				BF0E7D772CACED7B006A6FD8 /* FormTableViewCell.swift */,
+				BF0E7D7A2CACF253006A6FD8 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -366,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1509792CAA620B00D55107 /* AppDelegate.swift in Sources */,
+				BF0E7D7D2CACF2A6006A6FD8 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				BF1509B02CAA621A00D55107 /* CameraViewController.swift in Sources */,
 				BF1509B12CAA621A00D55107 /* ExplorerViewController.swift in Sources */,
 				BF1509B22CAA621A00D55107 /* HomeViewController.swift in Sources */,
@@ -374,10 +395,13 @@
 				BF7D89B32CAB9F9100671B0E /* IGFeedPostHeaderTableViewCell.swift in Sources */,
 				BF1509B52CAA621A00D55107 /* LoginViewController.swift in Sources */,
 				BF1509C92CAA6BDB00D55107 /* StorageManager.swift in Sources */,
+				BF0E7D782CACED7B006A6FD8 /* FormTableViewCell.swift in Sources */,
+				BF0E7D7F2CACF2D2006A6FD8 /* ProfileTabsCollectionReusableView.swift in Sources */,
 				BF1509B62CAA621A00D55107 /* RegistrationViewController.swift in Sources */,
 				BF1509C52CAA6B3A00D55107 /* DatabaseManager.swift in Sources */,
 				BF1509B72CAA621A00D55107 /* EditProfileViewController.swift in Sources */,
 				BF7D89B02CAB9E5F00671B0E /* IGFeedPostTableViewCell.swift in Sources */,
+				BF0E7D7B2CACF253006A6FD8 /* PhotoCollectionViewCell.swift in Sources */,
 				BF1509B82CAA621A00D55107 /* ListViewController.swift in Sources */,
 				BF1509B92CAA621A00D55107 /* PostEditorViewController.swift in Sources */,
 				BF1509CB2CAA6EFD00D55107 /* Extensions.swift in Sources */,
