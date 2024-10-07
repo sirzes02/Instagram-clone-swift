@@ -1,0 +1,7 @@
+--indent 4
+--allman false
+--linebreaks lf
+--wraparguments before-first
+--header ignore
+--ranges no-space
+--exclude Pods

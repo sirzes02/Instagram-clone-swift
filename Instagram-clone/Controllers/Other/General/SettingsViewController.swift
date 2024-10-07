@@ -10,37 +10,36 @@ import UIKit
 
 struct SettingCellModel {
     let title: String
-    let handler: (() -> Void)
+    let handler: () -> Void
 }
 
 final class SettingsViewController: UIViewController {
-    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureModels()
-        
+
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
-        
+
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
     private var data = [[SettingCellModel]]()
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-    
+
     private func configureModels() {
         data.append([
             SettingCellModel(title: "Edit Profile") { [weak self] in
@@ -51,9 +50,9 @@ final class SettingsViewController: UIViewController {
             },
             SettingCellModel(title: "Save Original Posts") { [weak self] in
                 self?.didTapSaveOriginalPosts()
-            }
+            },
         ])
-        
+
         data.append([
             SettingCellModel(title: "Terms of Service") { [weak self] in
                 self?.openURL(type: .terms)
@@ -63,23 +62,23 @@ final class SettingsViewController: UIViewController {
             },
             SettingCellModel(title: "Help / Feedback") { [weak self] in
                 self?.openURL(type: .help)
-            }
+            },
         ])
-        
+
         data.append([
             SettingCellModel(title: "Log Out") { [weak self] in
                 self?.didTapLogOut()
-            }
+            },
         ])
     }
-    
+
     enum SettingsURLType {
         case terms, privacy, help
     }
-    
+
     private func openURL(type: SettingsURLType) {
         let urlString: String
-        
+
         switch type {
         case .terms:
             urlString = "https://help.instagram.com/581066165581870"
@@ -88,36 +87,34 @@ final class SettingsViewController: UIViewController {
         case .help:
             urlString = "https://help.instagram.com/"
         }
-        
+
         guard let url = URL(string: urlString) else {
             return
         }
-        
+
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
-    
-    private func didTapSaveOriginalPosts() {
-        
-    }
-    
-    private func didTapInviteFriends() {
-        
-    }
-    
+
+    private func didTapSaveOriginalPosts() {}
+
+    private func didTapInviteFriends() {}
+
     private func didTapEditProfile() {
         let vc = EditProfileViewController()
         vc.title = "Edit Profile"
-        
+
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
-    
+
     private func didTapLogOut() {
-        let actionSheet = UIAlertController(title: "Log Out",
-                                            message: "Are you sure you want log out?",
-                                            preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(
+            title: "Log Out",
+            message: "Are you sure you want log out?",
+            preferredStyle: .actionSheet
+        )
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
             AuthManager.shared.logOut { success in
@@ -135,31 +132,30 @@ final class SettingsViewController: UIViewController {
                 }
             }
         }))
-        
+
         actionSheet.popoverPresentationController?.sourceView = tableView
         actionSheet.popoverPresentationController?.sourceRect = tableView.bounds
         present(actionSheet, animated: true)
     }
-    
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         data.count
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         data[section].count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
         cell.accessoryType = .disclosureIndicator
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         data[indexPath.section][indexPath.row].handler()

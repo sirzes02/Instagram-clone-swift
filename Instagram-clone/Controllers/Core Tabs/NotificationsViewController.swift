@@ -8,14 +8,13 @@
 import UIKit
 
 class NotificationsViewController: UIViewController {
-
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notifications"
@@ -24,7 +23,7 @@ class NotificationsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
@@ -32,13 +31,13 @@ class NotificationsViewController: UIViewController {
 }
 
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+
         return cell
     }
 }

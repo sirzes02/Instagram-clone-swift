@@ -8,18 +8,16 @@
 import UIKit
 
 final class IGFeedPostTableViewCell: UITableViewCell {
-    
     static let identifier = "IGFeedPostTableViewCell"
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError()
     }
-    
-    public func configure() {
-        
-    }
+
+    public func configure() {}
 }

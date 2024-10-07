@@ -8,16 +8,15 @@
 import UIKit
 
 class ProfileTabsCollectionReusableView: UICollectionReusableView {
-    
     static let identifier = "ProfileTabsCollectionReusableView"
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .orange
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

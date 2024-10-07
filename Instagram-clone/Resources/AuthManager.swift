@@ -9,9 +9,9 @@ import FirebaseAuth
 
 public class AuthManager {
     static let shared = AuthManager()
-    
+
     // MARK: - Public
-    
+
     public func registerNewUser(with username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         DatabaseManager.shared.canCreateNewUser(with: email, username: username) { canCreate in
             if canCreate {
@@ -20,10 +20,9 @@ public class AuthManager {
                         completion(false)
                         return
                     }
-                    
+
                     DatabaseManager.shared.insertNewUser(with: email, username: username) { inserted in
                         completion(inserted)
-                        return
                     }
                 }
             } else {
@@ -31,7 +30,7 @@ public class AuthManager {
             }
         }
     }
-    
+
     public func loginUser(with username: String?, email: String?, password: String, completion: @escaping (Bool) -> Void) {
         if let email = email {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -39,14 +38,14 @@ public class AuthManager {
                     completion(false)
                     return
                 }
-                
+
                 completion(true)
             }
         } else if let username = username {
             print(username)
         }
     }
-    
+
     public func logOut(completion: @escaping (Bool) -> Void) {
         do {
             try Auth.auth().signOut()

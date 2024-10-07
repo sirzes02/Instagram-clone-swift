@@ -7,6 +7,4 @@
 
 import UIKit
 
-class IGFeedPostActionsTableViewCell: UITableViewCell {
-
-}
+class IGFeedPostActionsTableViewCell: UITableViewCell {}
